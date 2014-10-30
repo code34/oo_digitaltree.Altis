@@ -1,0 +1,12 @@
+Author = "Code34";
+onLoadName = "OO DIGITAL TREE";
+OnLoadMission = "OO DIGITAL TREE";
+onLoadMissionTime = 1;
+Respawn = "BASE";
+RespawnDelay = 10;
+RespawnDialog = 0;
+DisabledAI = true;
+joinUnassigned = 0;
+
+
+
