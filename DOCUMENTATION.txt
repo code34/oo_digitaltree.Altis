@@ -17,3 +17,57 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 	*/
+
+	/*
+		Function: = ["get", key] call OO_TREE;
+		Retrieve the value associated to a key
+		
+		Parameters:
+			key - string
+		
+	*/
+
+	/*
+		Function: = ["put", [key, value]] call OO_TREE;
+		Put/update a value associated to a key
+		
+		Parameters:
+			key - string
+			value - any kind of value 
+		
+	*/		
+
+
+	/*
+		Function: = ["remove", key] call OO_TREE;
+		Remove the value associated to key
+		
+		Parameters:
+			key - string
+		
+		
+	*/
+
+	/*
+		Function: = "entrySet" call OO_TREE;
+		Return all the value in the digital tree
+		
+		Parameters:
+			none
+	*/
+
+	/*
+		Function: = "keySet" call OO_TREE;
+		Return all the keys in the digital tree
+		
+		Parameters:
+			none
+	*/	
+
+	/*
+		Function: = "size" call OO_TREE;
+		Return the number of values in the digital tree
+		
+		Parameters:
+			none
+	*/	
