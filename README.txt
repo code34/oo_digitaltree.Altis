@@ -1,6 +1,6 @@
 	/*
 	Author: code34 nicolas_boiteux@yahoo.fr
-	Copyright (C) 2013 Nicolas BOITEUX
+	Copyright (C) 2014 Nicolas BOITEUX
 
 	CLASS OO_DIGITAL TREE
 	
@@ -30,6 +30,7 @@
 	You can share, modify, distribute this script but don't remove the licence and the name of the original author
 
 	logs:
+		0.3 - fix parseChildKeySet
 		0.2 - Make Arma Not War version
 		0.1 - OO DIGITAL TREE - first release
 
