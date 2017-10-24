@@ -1,6 +1,6 @@
 ﻿	/*
 	Author: code34 nicolas_boiteux@yahoo.fr
-	Copyright (C) 2014 Nicolas BOITEUX
+	Copyright (C) 2014-2018 Nicolas BOITEUX
 
 	CLASS OO_TREE
 	
@@ -25,6 +25,7 @@
 		PRIVATE VARIABLE("code","root");
 
 		PUBLIC FUNCTION("array","constructor") {
+			private ["_root"];
 			_root = ["new", [0,0]] call OO_NODE;
 			MEMBER("root", _root);
 		};
@@ -40,7 +41,7 @@
 			{
 				scopeName "oo_tree_searchkey";
 				_node = ["nextChild", _x ] call _node;
-				if(typename _node == "SCALAR") then {
+				if(typename _node isEqualTo "SCALAR") then {
 					_node = MEMBER("root", nil); 
 					breakout "oo_tree_searchkey";
 				};
@@ -63,7 +64,7 @@
 			while { _counter < _length } do {		
 				scopeName "oo_tree_put";
 				_scalar = _scalars select _counter;
-				if(typename (["nextChild", _scalar ] call _node) == "SCALAR") then {
+				if(typename (["nextChild", _scalar ] call _node) isEqualTo "SCALAR") then {
 					breakout "oo_tree_put";
 				} else {
 					_node = ["nextChild", _scalar ] call _node;
