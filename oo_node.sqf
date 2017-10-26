@@ -39,10 +39,8 @@
 		PUBLIC FUNCTION("", "getValue") { MEMBER("value", nil); };
 
 		PUBLIC FUNCTION("scalar", "nextChild") {
-			private ["_return", "_scalar"];
-
-			_scalar = _this;
-			_return = -1;
+			private _scalar = _this;
+			private _return = -1;
 
 			{
 				scopename "oo_node_nextchild";
@@ -56,14 +54,13 @@
 		};
 
 		PUBLIC FUNCTION("array", "parseChildKeySet") {
-			private ["_array", "_key", "_localkey", "_string"];
-
-			_key = _this;
-			_localkey = MEMBER("getCurrent", nil);
+			private _key = _this;
+			private _localkey = MEMBER("getCurrent", nil);
+			private 	_array = [];
+			private _string = "";
 
 			if(_localkey > 0) then { _key pushBack _localkey; };
 
-			_array = [];
 			{
 				_array append (["parseChildKeySet", _key] call (_x select 1));
 				sleep 0.0001;
@@ -78,8 +75,8 @@
 		};
 
 		PUBLIC FUNCTION("", "parseChildEntrySet") {
-			private ["_array", "_value"];
-			_array = [];
+			private _array = [];
+			private _value = [];
 			{
 				_array append ("parseChildEntrySet" call (_x select 1));
 				_value = "getValue" call (_x select 1);
@@ -90,7 +87,7 @@
 		};
 
 		PUBLIC FUNCTION("", "getChild") {
-			private ["_return"];
+			private _return = -1;
 			if(count MEMBER("childrens", nil) == 0) then { 
 				_return = -1;
 			} else {
@@ -100,19 +97,14 @@
 		};
 
 		PUBLIC FUNCTION("scalar", "addChild") {
-			private ["_node", "_scalar"];
-
-			_scalar = _this;
-			_node = ["new", [MEMBER("current", nil), _scalar]] call OO_NODE;
+			private _scalar = _this;
+			private _node = ["new", [MEMBER("current", nil), _scalar]] call OO_NODE;
 			MEMBER("childrens", nil) pushBack [_scalar, _node];
 			_node;
 		};
 
 		PUBLIC FUNCTION("scalar", "removeChild") {
-			private ["_index"];
-
-			_index = MEMBER("childrens", nil) find _this;
-			if(_index > -1) then { MEMBER("childrens", nil) deleteAt _index; };
+			if((MEMBER("childrens", nil) find _this) > -1) then { MEMBER("childrens", nil) deleteAt _index; };
 		};
 
 		PUBLIC FUNCTION("array", "setValue") {

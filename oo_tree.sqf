@@ -25,23 +25,20 @@
 		PRIVATE VARIABLE("code","root");
 
 		PUBLIC FUNCTION("array","constructor") {
-			private ["_root"];
-			_root = ["new", [0,0]] call OO_NODE;
+			private _root = ["new", [0,0]] call OO_NODE;
 			MEMBER("root", _root);
 		};
 
 		PUBLIC FUNCTION("","getRoot") FUNC_GETVAR("root");
 
 		PUBLIC FUNCTION("string", "searchKey") {
-			private ["_node", "_scalars", "_counter", "_length"];
-
-			_scalars = toArray (_this);
-			_node = MEMBER("root", nil);
+			private _scalars = toArray (_this);
+			private _node = MEMBER("root", nil);
 
 			{
 				scopeName "oo_tree_searchkey";
 				_node = ["nextChild", _x ] call _node;
-				if(typename _node isEqualTo "SCALAR") then {
+				if(_node isEqualType 0) then {
 					_node = MEMBER("root", nil); 
 					breakout "oo_tree_searchkey";
 				};
@@ -51,20 +48,18 @@
 		};
 
 		PUBLIC FUNCTION("array", "put") {
-			private ["_key", "_value", "_node", "_scalars", "_counter", "_length", "_scalar"];
-
-			_key = _this select 0;
-			_value = _this select 1;
-
-			_scalars = toArray (_key);
-			_node = MEMBER("root", nil);
-			_counter = 0;
-			_length = count _scalars;
+			private _key = _this select 0;
+			private _value = _this select 1;
+			private _scalars = toArray (_key);
+			private _length = count _scalars;
+			private _node = MEMBER("root", nil);
+			private _counter = 0;
+			private _scalar = 0;
 
 			while { _counter < _length } do {		
 				scopeName "oo_tree_put";
 				_scalar = _scalars select _counter;
-				if(typename (["nextChild", _scalar ] call _node) isEqualTo "SCALAR") then {
+				if((["nextChild", _scalar ] call _node) isEqualType 0) then {
 					breakout "oo_tree_put";
 				} else {
 					_node = ["nextChild", _scalar ] call _node;
@@ -84,22 +79,17 @@
 		};
 
 		PUBLIC FUNCTION("string", "get") {
-			private ["_key", "_node"];
-			_key = _this;
-			_node = MEMBER("searchKey", _key);
-			("getValue" call _node) select 0;
+			("getValue" call MEMBER("searchKey", _this)) select 0;
 		};
 
 		PUBLIC FUNCTION("string", "remove") {
-			private ["_scalar", "_node", "_scalars", "_counter", "_length", "_array", "_remove"];
-
-			_scalars = toArray (_this);
-			_node = MEMBER("root", nil);
-			_array = [_node];
+			private _scalars = toArray (_this);
+			private _node = MEMBER("root", nil);
+			private _array = [_node];
 
 			{
 				_node = ["nextChild", _x ] call _node;
-				_array = [_node] + _array ;
+				_array pushBack _node;
 				sleep 0.0000001;
 			}foreach _scalars;
 
@@ -112,7 +102,7 @@
 			// supprimer le fils avec le scalar
 			// retirer la reference du fils
 
-			_remove = false;
+			private _remove = false;
 			{
 				if(_remove) then {
 					["removeChild", _scalar] call _x;
@@ -132,13 +122,11 @@
 		};
 
 		PUBLIC FUNCTION("", "entrySet") {
-			_node = MEMBER("root", nil);
-			"parseChildEntrySet" call _node;
+			"parseChildEntrySet" call MEMBER("root", nil);
 		};
 
 		PUBLIC FUNCTION("", "keySet") {
-			_node = MEMBER("root", nil);
-			 ["parseChildKeySet", []] call _node;
+			 ["parseChildKeySet", []] call MEMBER("root", nil);
 		};
 
 		PUBLIC FUNCTION("", "size") {
