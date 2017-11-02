@@ -1,9 +1,9 @@
-	call compilefinal preprocessFileLineNumbers "oo_tree.sqf";
-	call compilefinal preprocessFileLineNumbers "oo_node.sqf";
+	call compile preprocessFileLineNumbers "oo_tree.sqf";
+	call compile preprocessFileLineNumbers "oo_node.sqf";
 
 	sleep 1;
 
-	_tree = ["new", []] call OO_TREE;
+	private _tree = ["new", []] call OO_TREE;
 	["put", ["toto", "super la"]] call _tree;
 	["put", ["toti", "super la super clef"]] call _tree;
 	["put", ["jota", "la moto de dudu le berlu"]] call _tree;
