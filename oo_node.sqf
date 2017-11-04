@@ -27,6 +27,7 @@
 		PRIVATE VARIABLE("array","value");
 
 		PUBLIC FUNCTION("array","constructor") {
+			DEBUG(#, "OO_NODE::constructor")
 			MEMBER("parent", _this select 0);
 			MEMBER("current", _this select 1);
 			MEMBER("childrens", []);
@@ -39,6 +40,7 @@
 		PUBLIC FUNCTION("", "getValue") { MEMBER("value", nil); };
 
 		PUBLIC FUNCTION("scalar", "nextChild") {
+			DEBUG(#, "OO_NODE::nextChild")
 			private _scalar = _this;
 			private _return = -1;
 
@@ -54,6 +56,7 @@
 		};
 
 		PUBLIC FUNCTION("array", "parseChildKeySet") {
+			DEBUG(#, "OO_NODE::parseChildKeySet")
 			private _key = _this;
 			private _localkey = MEMBER("getCurrent", nil);
 			private 	_array = [];
@@ -75,6 +78,7 @@
 		};
 
 		PUBLIC FUNCTION("", "parseChildEntrySet") {
+			DEBUG(#, "OO_NODE::parseChildEntrySet")
 			private _array = [];
 			private _value = [];
 			{
@@ -87,6 +91,7 @@
 		};
 
 		PUBLIC FUNCTION("", "getChild") {
+			DEBUG(#, "OO_NODE::getChild")
 			private _return = -1;
 			if(count MEMBER("childrens", nil) == 0) then { 
 				_return = -1;
@@ -97,6 +102,7 @@
 		};
 
 		PUBLIC FUNCTION("scalar", "addChild") {
+			DEBUG(#, "OO_NODE::addChild")
 			private _scalar = _this;
 			private _node = ["new", [MEMBER("current", nil), _scalar]] call OO_NODE;
 			MEMBER("childrens", nil) pushBack [_scalar, _node];
@@ -104,14 +110,17 @@
 		};
 
 		PUBLIC FUNCTION("scalar", "removeChild") {
+			DEBUG(#, "OO_NODE::removeChild")
 			if((MEMBER("childrens", nil) find _this) > -1) then { MEMBER("childrens", nil) deleteAt _index; };
 		};
 
 		PUBLIC FUNCTION("array", "setValue") {
+			DEBUG(#, "OO_NODE::setValue")
 			MEMBER("value", _this);
 		};
 
 		PUBLIC FUNCTION("","deconstructor") { 
+			DEBUG(#, "OO_NODE::deconstructor")
 			DELETE_VARIABLE("childrens");
 			DELETE_VARIABLE("current");
 			DELETE_VARIABLE("parent");

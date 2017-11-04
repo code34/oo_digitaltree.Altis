@@ -25,6 +25,7 @@
 		PRIVATE VARIABLE("code","root");
 
 		PUBLIC FUNCTION("array","constructor") {
+			DEBUG(#, "OO_TREE::constructor")
 			private _root = ["new", [0,0]] call OO_NODE;
 			MEMBER("root", _root);
 		};
@@ -32,6 +33,7 @@
 		PUBLIC FUNCTION("","getRoot") FUNC_GETVAR("root");
 
 		PUBLIC FUNCTION("string", "searchKey") {
+			DEBUG(#, "OO_TREE::searchKey")
 			private _scalars = toArray (_this);
 			private _node = MEMBER("root", nil);
 
@@ -48,6 +50,7 @@
 		};
 
 		PUBLIC FUNCTION("array", "put") {
+			DEBUG(#, "OO_TREE::put")
 			private _key = _this select 0;
 			private _value = _this select 1;
 			private _scalars = toArray (_key);
@@ -79,10 +82,12 @@
 		};
 
 		PUBLIC FUNCTION("string", "get") {
+			DEBUG(#, "OO_TREE::get")
 			("getValue" call MEMBER("searchKey", _this)) select 0;
 		};
 
 		PUBLIC FUNCTION("string", "remove") {
+			DEBUG(#, "OO_TREE::remove")
 			private _scalars = toArray (_this);
 			private _node = MEMBER("root", nil);
 			private _array = [_node];
@@ -122,19 +127,23 @@
 		};
 
 		PUBLIC FUNCTION("", "entrySet") {
+			DEBUG(#, "OO_TREE::entrySet")
 			"parseChildEntrySet" call MEMBER("root", nil);
 		};
 
 		PUBLIC FUNCTION("", "keySet") {
+			DEBUG(#, "OO_TREE::keySet")
 			 ["parseChildKeySet", []] call MEMBER("root", nil);
 		};
 
 		PUBLIC FUNCTION("", "size") {
+			DEBUG(#, "OO_TREE::entrySet")
 			count MEMBER("entrySet", nil);
 		};
 
 
 		PUBLIC FUNCTION("","deconstructor") { 
+			DEBUG(#, "OO_TREE::deconstructor")
 			DELETE_VARIABLE("root");
 		};
 	ENDCLASS;
