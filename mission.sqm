@@ -1,73 +1,72 @@
-version=12;
+version=53;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=2;
+	};
+	class Camera
+	{
+		pos[]={14722.173,42.91,16675.49};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
+	};
+};
+binarizationWanted=0;
+addons[]=
+{
+	"A3_Characters_F"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=1;
+		class Item0
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+	};
+};
+randomSeed=318013;
+class ScenarioData
+{
+	author="Code34";
+};
+class Intro
+{
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
 class Mission
 {
-	addOns[]=
-	{
-		"A3_Modules_F_Multiplayer",
-		"A3_Characters_F_BLUFOR",
-		"a3_characters_f_beta",
-		"A3_Air_F_Gamma_UAV_02",
-		"A3_Soft_F_MRAP_01",
-		"A3_Armor_F_AMV",
-		"A3_Air_F_Heli_Light_01",
-		"A3_Air_F_Beta_Heli_Transport_01",
-		"A3_Air_F_Beta_Heli_Attack_01",
-		"A3_Misc_F_Helpers",
-		"A3_Structures_F_Mil_Helipads",
-		"A3_Structures_F_System",
-		"A3_Signs_F",
-		"a3_map_altis",
-		"A3_Characters_F_INDEP",
-		"A3_Air_F_Beta_Heli_Transport_02",
-		"A3_Air_F_Heli_Light_02",
-		"A3_armor_f_beta_APC_Tracked_02",
-		"A3_Soft_F_Offroad_01",
-		"A3_Soft_F_MRAP_03",
-		"A3_Soft_F_Quadbike",
-		"a3_soft_f_beta_quadbike",
-		"A3_Boat_F_Boat_Transport_01",
-		"a3_boat_f_beta_boat_transport_01",
-		"A3_Structures_F_Mil_Shelters",
-		"A3_Boat_F_Beta_Boat_Armed_01",
-		"A3_Boat_F_Boat_Armed_01",
-		"A3_Boat_F_SDV_01",
-		"A3_Structures_F_Civ_InfoBoards",
-		"A3_Modules_F_Intel",
-		"A3_Soft_F_Crusher_UGV",
-		"A3_UAV_F_Characters_F_Gamma",
-		"A3_Structures_F_Walls",
-		"A3_Characters_F_Gamma",
-		"A3_Armor_F_Slammer",
-		"A3_Armor_F_T100K",
-		"A3_Soft_F_Gamma_Offroad",
-		"A3_Armor_F_APC_Wheeled_03",
-		"A3_Air_F_Gamma_Plane_Fighter_03",
-		"A3_Soft_F_Car",
-		"A3_Soft_F_Truck",
-		"A3_Boat_F_Civilian_Boat",
-		"A3_Soft_F_Gamma_HEMTT",
-		"A3_Soft_F_Gamma_TruckHeavy",
-		"A3_Structures_F_Mil_BagBunker",
-		"A3_Characters_F_OPFOR",
-		"A3_Air_F_Gamma_UAV_01",
-		"A3_Modules_F_Supports",
-		"A3_Weapons_F_Ammoboxes",
-		"A3_Structures_F_Furniture",
-		"a3_characters_f",
-		"A3_Armor_F_Panther",
-		"A3_Air_F_Beta_Heli_Attack_02",
-		"A3_Soft_F_MRAP_02",
-		"A3_Static_F_Gamma",
-		"a3_static_f",
-		"A3_Armor_F_EPC_MBT_01"
-	};
-	addOnsAuto[]=
-	{
-		"A3_Characters_F_BLUFOR",
-		"a3_characters_f",
-		"a3_map_altis"
-	};
-	randomSeed=7374927;
 	class Intel
 	{
 		briefingName="OO DIGITAL TREE";
@@ -91,40 +90,45 @@ class Mission
 		startFogDecay=0.0049999999;
 		forecastFogDecay=0.0049999999;
 	};
-	class Groups
+	class Entities
 	{
 		items=1;
 		class Item0
 		{
-			side="WEST";
-			class Vehicles
+			dataType="Group";
+			side="West";
+			class Entities
 			{
 				items=1;
 				class Item0
 				{
-					position[]={14722.173,17.91,16700.439};
-					id=0;
-					side="WEST";
-					vehicle="B_Soldier_F";
-					player="PLAYER COMMANDER";
-					leader=1;
-					skill=0.60000002;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14722.173,17.911438,16700.541};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						isPlayer=1;
+						isPlayable=1;
+					};
+					id=1;
+					type="B_Soldier_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=0;
+			atlOffset=185.97;
 		};
 	};
 };
-class Intro
+class OutroLoose
 {
-	addOns[]=
-	{
-		"a3_map_altis"
-	};
-	addOnsAuto[]=
-	{
-		"a3_map_altis"
-	};
-	randomSeed=1421983;
 	class Intel
 	{
 		timeOfChanges=1800.0002;
@@ -148,47 +152,6 @@ class Intro
 };
 class OutroWin
 {
-	addOns[]=
-	{
-		"a3_map_altis"
-	};
-	addOnsAuto[]=
-	{
-		"a3_map_altis"
-	};
-	randomSeed=11576140;
-	class Intel
-	{
-		timeOfChanges=1800.0002;
-		startWeather=0.30000001;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0.30000001;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
-		year=2035;
-		month=6;
-		day=24;
-		hour=12;
-		minute=0;
-		startFogBase=0.001;
-		forecastFogBase=0.001;
-		startFogDecay=0.0049999999;
-		forecastFogDecay=0.0049999999;
-	};
-};
-class OutroLoose
-{
-	addOns[]=
-	{
-		"a3_map_altis"
-	};
-	addOnsAuto[]=
-	{
-		"a3_map_altis"
-	};
-	randomSeed=549713;
 	class Intel
 	{
 		timeOfChanges=1800.0002;
